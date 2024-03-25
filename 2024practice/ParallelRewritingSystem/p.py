@@ -1,18 +1,16 @@
 from typing import DefaultDict
 
+#input parsing
 s = input()
 numProductionRules = int(input())
 rules = DefaultDict(list)
 for n in range(numProductionRules):
-    xy = input().split()
-    rules[xy[0]] = xy[1]
+    x,y = input().split()
+    rules[x] = y
 numIteractions = int(input())
+
+#applying the rules 
 for n in range(numIteractions):
-    newS = ""
-    for c in s:
-        if c in rules:
-            newS += rules[c]
-        else:
-            newS += c
-    s = newS
+    s = ''.join([rules.get(c, c) for c in s])
+
 print(s)
